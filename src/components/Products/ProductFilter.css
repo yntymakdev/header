@@ -6,3 +6,31 @@
   overflow-y: scroll;
   height: 100vh;
 }
+.card {
+  width: 230px;
+}
+.card_img {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+.list {
+  padding: 50px 70px 260px 150px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-self: flex-end;
+  gap: 40px;
+}
+.card_text h4 {
+  color: brown;
+}
+.card_text h5 {
+  color: grey;
+}
+
+.card_text h6 {
+  color: #181818;
+  font-size: 20px;
+  gap: 10px;
+}

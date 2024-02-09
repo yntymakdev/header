@@ -175,6 +175,8 @@ const ProductFilter = () => {
   const benefitsArr = ["Easy On & Off"];
 
   const [more, setMore] = useState(4);
+  const [open, SetOpen] = useState(2);
+  const [but, SetBut] = useState(8);
 
   return (
     <Box id="side_bar">
@@ -222,9 +224,42 @@ const ProductFilter = () => {
               padding: 0,
             }}
           >
-            {genderArr.map((i, index) => (
+            {open === 2
+              ? genderArr.slice(0, 2).map((i, index) => (
+                  <ListItem
+                    key={index}
+                    sx={{
+                      fontSize: "16px",
+                      p: 0,
+                      m: 0,
+                      width: "200px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Checkbox sx={{ p: 0, m: "0 5px 0 0" }} />
+                    {i}
+                  </ListItem>
+                ))
+              : genderArr.map((i, index) => (
+                  <ListItem
+                    key={index}
+                    sx={{
+                      fontSize: "16px",
+                      p: 0,
+                      m: 0,
+                      width: "200px",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Checkbox sx={{ p: 0, m: "0 5px 0 0" }} />
+                    {i}
+                  </ListItem>
+                ))}
+            {genderArr.length === 2 ? (
               <ListItem
-                key={index}
+                onClick={() => SetOpen(genderArr.length)}
                 sx={{
                   fontSize: "16px",
                   p: 0,
@@ -234,10 +269,43 @@ const ProductFilter = () => {
                   alignItems: "center",
                 }}
               >
-                <Checkbox sx={{ p: 0, m: "0 5px 0 0" }} />
-                {i}
+                <AddIcon sx={{ m: "0 7px 0 0 " }} />
+                More
               </ListItem>
-            ))}
+            ) : (
+              ""
+            )}
+            {open === genderArr.length ? (
+              <ListItem
+                onClick={() => SetOpen(2)}
+                sx={{
+                  fontSize: "16px",
+                  p: 0,
+                  m: 0,
+                  width: "200px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <RemoveIcon sx={{ m: "0 7px 0 0 " }} />
+                close
+              </ListItem>
+            ) : (
+              <ListItem
+                onClick={() => SetOpen(genderArr.length)}
+                sx={{
+                  fontSize: "16px",
+                  p: 0,
+                  m: 0,
+                  width: "200px",
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <AddIcon sx={{ m: "0 7px 0 0 " }} />
+                More
+              </ListItem>
+            )}
           </AccordionDetails>
         </Accordion>
         <Accordion
@@ -274,8 +342,40 @@ const ProductFilter = () => {
               padding: 0,
             }}
           >
-            {sizeArr.map((i, index) => (
-              <Button
+            {but === 8
+              ? sizeArr.slice(0, 8).map((i, index) => (
+                  <Button
+                    sx={{
+                      minWidth: "55px",
+                      height: "35px",
+                      border: "1.5px solid #CACACB",
+                      color: "#000",
+                      fontSize: "16px",
+                    }}
+                    key={index}
+                  >
+                    {i}
+                  </Button>
+                ))
+              : sizeArr.map((i, index) => (
+                  <Button
+                    sx={{
+                      minWidth: "55px",
+                      height: "35px",
+                      border: "1.5px solid #CACACB",
+                      color: "#000",
+                      fontSize: "16px",
+                    }}
+                    key={index}
+                  >
+                    {i}
+                  </Button>
+                ))}
+            {sizeArr.length === 8 ? (
+              <AddIcon
+                onClick={() => {
+                  SetBut(sizeArr.length);
+                }}
                 sx={{
                   minWidth: "55px",
                   height: "35px",
@@ -283,11 +383,40 @@ const ProductFilter = () => {
                   color: "#000",
                   fontSize: "16px",
                 }}
-                key={index}
-              >
-                {i}
-              </Button>
-            ))}
+              />
+            ) : (
+              ""
+              // key={index}
+            )}
+            {but === sizeArr.length ? (
+              <AddIcon
+                onClick={() => {
+                  SetBut(8);
+                }}
+                sx={{
+                  minWidth: "55px",
+                  height: "35px",
+                  border: "1.5px solid #CACACB",
+                  color: "#000",
+                  fontSize: "16px",
+                }}
+              />
+            ) : (
+              <AddIcon
+                onClick={() => {
+                  SetBut(sizeArr.length);
+                }}
+                sx={{
+                  minWidth: "55px",
+                  height: "35px",
+                  border: "1.5px solid #CACACB",
+                  color: "#000",
+                  fontSize: "16px",
+                }}
+              />
+
+              // key={index}
+            )}
           </AccordionDetails>
         </Accordion>
         <Accordion
@@ -657,7 +786,7 @@ const ProductFilter = () => {
                 }}
               >
                 <RemoveIcon />
-                Less
+                Close
               </ListItem>
             ) : (
               <ListItem
@@ -711,6 +840,9 @@ const ProductFilter = () => {
               padding: 0,
             }}
           >
+            {/* {
+            open === 2 ? () : ()
+            } */}
             {shoesArr.map((i, index) => (
               <ListItem
                 key={index}

@@ -13,3 +13,11 @@
   width: 90%;
   margin: 0 auto;
 }
+.test_navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background: white;
+  height: 80px;
+  transition: 0.2s;
+}

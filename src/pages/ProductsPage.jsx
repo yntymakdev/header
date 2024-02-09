@@ -7,6 +7,7 @@ import NavbarCarusel from "../components/Navbar/NavbarCarusel";
 import NavbarTest from "../components/Navbar/NavbarTest";
 import UpNavbar from "../components/Navbar/UpNavbar";
 import ProductList from "../components/Products/ProductList";
+import BasicPagination from "../components/Paginarion/Pagination";
 
 const ProductsPage = () => {
   return (
@@ -15,7 +16,7 @@ const ProductsPage = () => {
         <UpNavbar />
         <NavbarTest />
         <NavbarCarusel />
-        <Box>
+        <Box sx={{ display: "flex" }}>
           <Box>
             <ProductFilter />
           </Box>

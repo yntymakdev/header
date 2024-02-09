@@ -1,5 +1,5 @@
 import { Box, IconButton, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../image/up_test.png";
 import "./Navbar.css";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
@@ -52,18 +52,41 @@ const NavbarTest = () => {
       },
     },
   }));
+  let nav = ["New & Featured"];
+  // const [great, SetGreat] = useState(false);
+  // const [good, SetGood] = useState(0);
+
   const navigate = useNavigate();
+
   return (
     <Box id="test_navbar">
       <Box className="container">
-        <Box className="test_navbar">
+        <Box
+          // style={{
+          //   height: good ? "400px" : "",
+          //   position: "absolute",
+          //   position: "relative",
+          // }}
+          // onMouseLeave={() => {
+          //   SetGreat(false);
+          //   SetGood(0);
+          // }}
+          className="test_navbar"
+        >
           <img src={logo} alt="test_navbar" />
           <Box className="test_navbar_nav">
             <Box className="test_nav_link">
               <IconButton onClick={() => navigate("/admin")}>
                 <AddIcon />
               </IconButton>
-              <Typography>New & Featured</Typography>
+              <Typography
+              // onMouseOver={() => {
+              //   SetGreat(true);
+              //   SetGood(1);
+              // }}
+              >
+                {nav[0]}
+              </Typography>
               <Link to="/">
                 <Typography>Men</Typography>
               </Link>
@@ -92,6 +115,14 @@ const NavbarTest = () => {
             </Box>
           </Box>
         </Box>
+        {/* <h1
+          style={{
+            display: good === 1 ? "block" : "none",
+          }}
+        >
+          YNTYMAK
+        </h1>
+        ; */}
       </Box>
     </Box>
   );
